@@ -36,6 +36,7 @@ const displayCategoryId = datas => {
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
+        // console.log(id)
         const { image_url, title, details, _id } = id
         const div = document.createElement("div");
         div.innerHTML = `
@@ -59,7 +60,7 @@ const displayCategoryId = datas => {
                         </div>
                         
                 <div class="card-actions">
-                <label onclick="newsDetails('${_id}')" for="my-modal-3" class="btn modal-button">open modal</label> 
+                <label onclick="newsDetails('${_id}')" for="my-modal-3" class="btn btn-primary modal-button">Details</label> 
                 
                 </div>
             </div>
@@ -69,14 +70,25 @@ const displayCategoryId = datas => {
 }
 
 // modal open url area 
-const newsDetails = () => {
-    fetch(`https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`)
+const newsDetails = (news_id) => {
+    fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
         .then(response => response.json())
-        .then(data => displayModal(data.data[0]))
+        .then(data => displayModal(data.data))
 }
 
-const displayModal=modal =>{
-    console.log(modal)
+const modalBody = document.getElementById("modal-Container")
+const displayModal = modal => {
+
+    modal.forEach(element => {
+        console.log(element)
+        modalBody.innerHTML = `
+            <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <p class="py-4">${element.details}</p>
+            <h2 class="text-zinc-200 text-center font-bold">Author Name: ${element.author.name}</h2>
+            <img src="${element.image_url}"/>
+            `;
+    })
+
 }
 newsDetails()
 
