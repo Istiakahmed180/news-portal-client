@@ -32,11 +32,11 @@ const allCategoryId = category_id => {
 
 const displayCategoryId = datas => {
 
-    
+
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
-        const { image_url, title, details,_id } = id
+        const { image_url, title, details, _id } = id
         const div = document.createElement("div");
         div.innerHTML = `
             <figure class="px-10 pt-10">
@@ -59,7 +59,7 @@ const displayCategoryId = datas => {
                         </div>
                         
                 <div class="card-actions">
-                <label onclick="newsDetails()" for="my-modal-3" class="btn modal-button">open modal</label> 
+                <label onclick="newsDetails('${_id}')" for="my-modal-3" class="btn modal-button">open modal</label> 
                 
                 </div>
             </div>
@@ -69,24 +69,14 @@ const displayCategoryId = datas => {
 }
 
 // modal open url area 
-const newsDetails= ()=>{
+const newsDetails = () => {
     fetch(`https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`)
-    .then(response => response.json())
-    .then(data => modalNewDetails(data.data))
+        .then(response => response.json())
+        .then(data => displayModal(data.data[0]))
 }
 
-const modalConteiner=document.getElementById("modal-Container")
-const modalNewDetails=details=>{
-    console.log(details[0])
-    const div=document.createElement("div")
-    div.classList.add("modal-box relative")
-    div.innerHTML=`
-    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia
-        for free!</p>
-    `;
-    modalConteiner.appendChild(div)
+const displayModal=modal =>{
+    console.log(modal)
 }
 newsDetails()
 
