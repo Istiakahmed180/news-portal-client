@@ -22,7 +22,7 @@ const displayNewsCategory = async () => {
 }
 displayNewsCategory()
 
-const allCategoryId = async (category_id) => {
+const allCategoryId = category_id => {
 
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
     fetch(url)
@@ -32,12 +32,11 @@ const allCategoryId = async (category_id) => {
 
 const displayCategoryId = datas => {
 
-    console.log(datas)
+    
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
-
-        const { image_url, title, details } = id
+        const { image_url, title, details,_id } = id
         const div = document.createElement("div");
         div.innerHTML = `
             <figure class="px-10 pt-10">
@@ -46,13 +45,49 @@ const displayCategoryId = datas => {
             <div class="card-body items-center text-center">
                     <h2 class="card-title text-gray-800 font-bold">${title}</h2>
                     <p>${details.slice(0, 350) + "..."}</p>
+                    <div class="flex space-x-96">
+                            <div class="flex">
+                            <div><img class="rounded-full w-12" src="${id.author.img}" /></div>
+                            <div>
+                                <p class="text-black font-bold">${id.author.name ? id.author.name : "No Data Found"}</p>
+                                <p>${id.author.published_date}</p>
+                            </div>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Rating: ${id.rating.number}</p>
+                            </div>
+                        </div>
+                        
                 <div class="card-actions">
-                    <button class="btn btn-primary">Details</button>
+                <label onclick="newsDetails()" for="my-modal-3" class="btn modal-button">open modal</label> 
+                
                 </div>
             </div>
         `;
         categoryIdConteiner.appendChild(div)
     }
 }
+
+// modal open url area 
+const newsDetails= ()=>{
+    fetch(`https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`)
+    .then(response => response.json())
+    .then(data => modalNewDetails(data.data))
+}
+
+const modalConteiner=document.getElementById("modal-Container")
+const modalNewDetails=details=>{
+    console.log(details[0])
+    const div=document.createElement("div")
+    div.classList.add("modal-box relative")
+    div.innerHTML=`
+    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia
+        for free!</p>
+    `;
+    modalConteiner.appendChild(div)
+}
+newsDetails()
 
 
