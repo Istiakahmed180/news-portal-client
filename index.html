@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active News</title>
+    <!-- tailwind and daisyui cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen bg-white ">
+    <!-- header part start -->
+    <header class="w-5/6 mx-auto">
+        <div class="navbar bg-white">
+            <div class="flex-1 ">
+                <a class="btn btn-primary normal-case text-xl">News</a>
+                <a class="btn btn-primary normal-case text-xl ml-2">Portal</a>
+            </div>
+            <div class="flex-none gap-2">
+                <div>
+                    <ul class="menu menu-horizontal bg-indigo-600 text-white font-semibold rounded-box mr-10">
+                        <li><a>News</a></li>
+                        <!-- tabindex will make the parent menu focusable to keep the submenu open if it's focused -->
+                        <li tabindex="0">
+                            <span>Blog</span>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown dropdown-end">
+
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10  rounded-full">
+                            <img src="https://placeimg.com/80/80/people" />
+                        </div>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+        <hr class="mt-5">
+    </header>
+    <!-- header part end -->
+
+    <!-- script link  -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
