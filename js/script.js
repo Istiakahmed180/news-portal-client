@@ -74,8 +74,8 @@ const displayCategoryId = async datas => {
             <div class="card-body items-center text-center">
                     <h2 class="card-title text-gray-800 font-bold">${title}</h2>
                     <p>${details.slice(0, 350) + "..."}</p>
-                    <div class="flex space-x-96 ">
-                            <div class="flex">
+                    <div>
+                            <div class="flex my-5">
                             <div><img class="rounded-full w-12" src="${id.author.img}" /></div>
                             <div>
                                 <p class="text-black font-bold">${id.author.name ? id.author.name : "No Data Found"}</p>
@@ -83,7 +83,7 @@ const displayCategoryId = async datas => {
                             </div>
                             </div>
                             <div>
-                                <p class="font-bold text-black">View: ${total_view ? total_view : "No Data Found"}</p>
+                                <p class="font-bold text-black mt-5">View: ${total_view ? total_view : "No Data Found"}</p>
                             </div>
                         </div>
                         
@@ -113,7 +113,7 @@ const modalBody = document.getElementById("modal-Container")
 const displayModal = modal => {
 
     modal.forEach(element => {
-        console.log(element)
+
         modalBody.innerHTML = `
             <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <p class="py-4">${element.details.slice(0, 450) + "..."}</p>
