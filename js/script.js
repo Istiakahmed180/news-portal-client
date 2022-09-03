@@ -14,6 +14,7 @@ const displayNewsCategory = async () => {
 
     const categoriesConteiner = document.getElementById("category-container");
     categoryData.forEach(element => {
+
         const li = document.createElement("li");
         li.innerHTML = `
             <a onclick="allCategoryId('${element.category_id}')">${element.category_name}</a>
@@ -36,10 +37,17 @@ const allCategoryId = category_id => {
 }
 
 
-const displayCategoryId = datas => {
+const displayCategoryId = async datas => {
+    const categoriesShow = document.getElementById("category-show")
+    categoriesShow.textContent = ``;
 
-
-
+    if (datas.length) {
+        const showDiv = document.createElement("div")
+        showDiv.innerHTML = `
+            <p>${datas.length} Items Found For Category</p>
+       `;
+        categoriesShow.appendChild(showDiv)
+    }
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
