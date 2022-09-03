@@ -5,10 +5,12 @@ const newsCategortData = async () => {
     const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
     const data = await response.json();
     return data.data.news_category;
+
 }
 
 const displayNewsCategory = async () => {
     const categoryData = await newsCategortData();
+
 
     const categoriesConteiner = document.getElementById("category-container");
     categoryData.forEach(element => {
@@ -17,10 +19,12 @@ const displayNewsCategory = async () => {
             <a onclick="allCategoryId('${element.category_id}')">${element.category_name}</a>
         `;
         categoriesConteiner.appendChild(li);
-    });
 
+    });
 }
 displayNewsCategory()
+
+const spinner = document.getElementById("spinner-container")
 
 const allCategoryId = category_id => {
 
@@ -28,15 +32,19 @@ const allCategoryId = category_id => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayCategoryId(data.data))
+    spinner.classList.remove("hidden")
 }
 
+
 const displayCategoryId = datas => {
+
 
 
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
         // console.log(id)
+        spinner.classList.add("hidden")
         const { image_url, title, details, _id } = id
         const div = document.createElement("div");
         div.innerHTML = `
@@ -67,6 +75,8 @@ const displayCategoryId = datas => {
         `;
         categoryIdConteiner.appendChild(div)
     }
+
+
 }
 
 // modal open url area 
@@ -74,6 +84,7 @@ const newsDetails = (news_id) => {
     fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
         .then(response => response.json())
         .then(data => displayModal(data.data))
+
 }
 
 const modalBody = document.getElementById("modal-Container")
@@ -83,8 +94,8 @@ const displayModal = modal => {
         console.log(element)
         modalBody.innerHTML = `
             <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <p class="py-4">${element.details}</p>
-            <h2 class="text-zinc-200 text-center font-bold">Author Name: ${element.author.name}</h2>
+            <p class="py-4">${element.details.slice(0, 450) + "..."}</p>
+            <h2 class="text-black text-center font-bold my-5">Author Name: ${element.author.name}</h2>
             <img src="${element.image_url}"/>
             `;
     })
