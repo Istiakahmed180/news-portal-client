@@ -15,10 +15,8 @@ const newsCategortData = async () => {
 const displayNewsCategory = async () => {
     const categoryData = await newsCategortData();
 
-
     const categoriesConteiner = document.getElementById("category-container");
     categoryData.forEach(element => {
-
         const li = document.createElement("li");
         li.innerHTML = `
             <a onclick="allCategoryId('${element.category_id}')">${element.category_name}</a>
@@ -26,6 +24,7 @@ const displayNewsCategory = async () => {
         categoriesConteiner.appendChild(li);
 
     });
+
 }
 displayNewsCategory()
 
@@ -41,36 +40,41 @@ const allCategoryId = category_id => {
         // catches errors both in fetch and response.json
         alert(err);
     }
-
     spinner.classList.remove("hidden")
 }
-
 
 const displayCategoryId = async datas => {
     const categoriesShow = document.getElementById("category-show")
     categoriesShow.textContent = ``;
 
+    datas.sort((a, b) => (a.total_view < b.total_view) ? 1 : -1)
+
     if (datas.length) {
         const showDiv = document.createElement("div")
         showDiv.innerHTML = `
-            <p>${datas.length} Items Found For Category</p>
+            <p>${datas.length} Items Found For Update News</p>
        `;
         categoriesShow.appendChild(showDiv)
     }
+
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
+
     for (const id of datas) {
+
         spinner.classList.add("hidden")
-        const { image_url, title, details, _id } = id
+
+        const { image_url, title, details, _id, total_view } = id
+
         const div = document.createElement("div");
         div.innerHTML = `
             <figure class="px-10 pt-10">
-                <img  src="${image_url}" alt="Shoes" class="rounded-xl w-full" />
+                <img  src="${image_url}" alt="Shoes" class="rounded-xl w-5/6" />
             </figure>
             <div class="card-body items-center text-center">
                     <h2 class="card-title text-gray-800 font-bold">${title}</h2>
                     <p>${details.slice(0, 350) + "..."}</p>
-                    <div class="flex space-x-96">
+                    <div class="flex space-x-96 ">
                             <div class="flex">
                             <div><img class="rounded-full w-12" src="${id.author.img}" /></div>
                             <div>
@@ -79,7 +83,7 @@ const displayCategoryId = async datas => {
                             </div>
                             </div>
                             <div>
-                                <p class="font-bold text-black">Rating: ${id.rating.number}</p>
+                                <p class="font-bold text-black">View: ${total_view ? total_view : "No Data Found"}</p>
                             </div>
                         </div>
                         
@@ -91,8 +95,6 @@ const displayCategoryId = async datas => {
         `;
         categoryIdConteiner.appendChild(div)
     }
-
-
 }
 
 // modal open url area 
@@ -122,9 +124,5 @@ const displayModal = modal => {
 
 }
 newsDetails()
-
-document.getElementById("blog-btn").addEventListener("click", function () {
-
-})
 
 

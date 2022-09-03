@@ -11,21 +11,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-full bg-white ">
+<body class="bg-stone-100 h-full">
     <!-- header part start -->
     <header class="w-5/6 mx-auto">
-        <div class="navbar bg-white">
-            <div class="flex-1 ">
-                <a class="btn btn-primary normal-case text-xl">News</a>
-                <a class="btn btn-primary normal-case text-xl ml-2">Portal</a>
+        <div class="navbar">
+            <div class="flex-1">
+                <img class="w-28 rounded-full" src="img/logo.jpg" alt="">
             </div>
+            <!-- <div class="flex-1 ">
+                <a class="btn btn-primary normal-case text-xl">Newz villa</a>
+            </div> -->
             <div class="flex-none gap-2">
                 <div>
                     <ul class="menu menu-horizontal bg-indigo-600 text-white font-semibold rounded-box mr-10">
-                        <li><a>News</a></li>
+                        <li><a>OUTLOOK </a></li>
                         <!-- tabindex will make the parent menu focusable to keep the submenu open if it's focused -->
                         <li tabindex="0">
-                            <label onckick="" for="my-modal-5" class="btn btn-primary modal-button">Blog</label>
+                            <label onckick="" for="my-modal-5" class="modal-button">BLOG</label>
 
                         </li>
                     </ul>
@@ -47,7 +49,7 @@
     <main>
         <!-- category section start -->
         <section class="w-5/6 mx-auto ">
-            <ul id="category-container" class="menu menu-horizontal bg-white text-slate-400 rounded-box px-28 mt-3">
+            <ul id="category-container" class="menu menu-horizontal bg-stone-100 text-stone-500 rounded-box px-28 mt-3">
                 <!-- <li><a>Item 1</a></li>
                 <li><a>Item 2</a></li>
                 <li><a>Item 3</a></li> -->
@@ -56,14 +58,14 @@
         <!-- category section end -->
 
         <!-- category list show start  -->
-        <section id="category-show" class="w-5/6 mx-auto mt-5 rounded-3xl text-2xl bg-slate-100 py-8 px-5">
+        <section id="category-show" class="w-5/6 mx-auto my-5 rounded-3xl text-2xl bg-stone-200 py-8 px-5">
 
         </section>
         <!-- category list show end  -->
 
         <!-- category ID section start  -->
         <section class="w-5/6 mx-auto">
-            <div id="category-id-container" class="card h-full bg-white shadow-xl grid-rows-1">
+            <div id="category-id-container" class="card h-full bg-stone-200 shadow-2xl grid-rows-1">
 
             </div>
         </section>
@@ -74,7 +76,7 @@
 
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
-                <div id="modal-Container" class="modal-box relative bg-white">
+                <div id="modal-Container" class="modal-box relative bg-stone-200">
 
 
                 </div>
@@ -91,8 +93,8 @@
         <!-- modal blog section start  -->
         <section>
             <input type="checkbox" id="my-modal-5" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box w-11/12 max-w-5xl">
+            <div class="modal ">
+                <div class="bg-stone-200 modal-box w-11/12 max-w-5xl">
                     <div>
                         <h3 class="font-bold text-lg">Question No 1: Difference between let and <span
                                 class="font-black">var</span> and const?</h3>
