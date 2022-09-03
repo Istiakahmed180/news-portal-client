@@ -2,10 +2,14 @@
 
 // news category data load 
 const newsCategortData = async () => {
-    const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
-    const data = await response.json();
-    return data.data.news_category;
-
+    try {
+        const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
+        const data = await response.json();
+        return data.data.news_category;
+    } catch (err) {
+        // catches errors both in fetch and response.json
+        alert(err);
+    }
 }
 
 const displayNewsCategory = async () => {
@@ -28,11 +32,16 @@ displayNewsCategory()
 const spinner = document.getElementById("spinner-container")
 
 const allCategoryId = category_id => {
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayCategoryId(data.data))
+    } catch (err) {
+        // catches errors both in fetch and response.json
+        alert(err);
+    }
 
-    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayCategoryId(data.data))
     spinner.classList.remove("hidden")
 }
 
@@ -51,7 +60,6 @@ const displayCategoryId = async datas => {
     const categoryIdConteiner = document.getElementById("category-id-container");
     categoryIdConteiner.textContent = ``;
     for (const id of datas) {
-        // console.log(id)
         spinner.classList.add("hidden")
         const { image_url, title, details, _id } = id
         const div = document.createElement("div");
@@ -89,10 +97,14 @@ const displayCategoryId = async datas => {
 
 // modal open url area 
 const newsDetails = (news_id) => {
-    fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
-        .then(response => response.json())
-        .then(data => displayModal(data.data))
-
+    try {
+        fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
+            .then(response => response.json())
+            .then(data => displayModal(data.data))
+    } catch (err) {
+        // catches errors both in fetch and response.json
+        alert(err);
+    }
 }
 
 const modalBody = document.getElementById("modal-Container")
@@ -110,5 +122,9 @@ const displayModal = modal => {
 
 }
 newsDetails()
+
+document.getElementById("blog-btn").addEventListener("click",function(){
+    
+})
 
 

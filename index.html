@@ -25,7 +25,7 @@
                         <li><a>News</a></li>
                         <!-- tabindex will make the parent menu focusable to keep the submenu open if it's focused -->
                         <li tabindex="0">
-                            <span>Blog</span>
+                            <label onckick="" for="my-modal-5" class="btn btn-primary modal-button">Blog</label>
 
                         </li>
                     </ul>
@@ -67,6 +67,7 @@
 
             </div>
         </section>
+        <!-- category ID section end  -->
 
         <!-- modal section start  -->
         <section>
@@ -81,13 +82,37 @@
         </section>
         <!-- modal section end  -->
 
+        <!-- spinner section start  -->
         <section id="spinner-container" class="mx-auto w-5/6 hidden">
             <progress class="progress "></progress>
         </section>
-        <!-- spinner section start  -->
         <!-- spinner section end  -->
 
-        <!-- category ID section end  -->
+        <!-- modal blog section start  -->
+        <section>
+            <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <div>
+                        <h3 class="font-bold text-lg">Question No 1: Difference between let and <span
+                                class="font-black">var</span> and const?</h3>
+                        <p class="py-4"><span class="font-black">Question No 1 Answer</span> : Var, let, and const is the keyword to declare variables in javascript. Var variable is an old method to declare a variable in javascript. In modern javascript, we use the let and const variable, which is introduced in the ES2015(ES6) update; now, the let and const variable is used more frequently in modern javascript compared to the var variable.</p>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg">Question No 2: Difference between arrow function and regular function?</h3>
+                        <p class="py-4"><span class="font-black">Question No 2 Answer</span> : Arrow functions – a new feature introduced in ES6 – enable writing concise functions in JavaScript. While both regular and arrow functions work in a similar manner, yet there are certain interesting differences between them, as discussed below.A programmer can get the same result as regular functions by writing a few lines of code using arrow functions.arguments object inside the regular functions contains the list of arguments.Inside of a regular JavaScript function, this value is dynamic. The dynamic context means that the value of this depends on how the function is invoked.Regular functions are constructible and callable. They can be called using the new keyword.</p>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="font-bold text-lg">Question No 3: Difference between arrow function and regular function?</h3>
+                        <p class="py-4"><span class="font-black">Question No 3 Answer</span> : Arrow functions – a new feature introduced in ES6 – enable writing concise functions in JavaScript. While both regular and arrow functions work in a similar manner, yet there are certain interesting differences between them, as discussed below.A programmer can get the same result as regular functions by writing a few lines of code using arrow functions.arguments object inside the regular functions contains the list of arguments.Inside of a regular JavaScript function, this value is dynamic. The dynamic context means that the value of this depends on how the function is invoked.Regular functions are constructible and callable. They can be called using the new keyword.</p>
+                    </div>
+                    <div class="modal-action">
+                        <label for="my-modal-5" class="btn">Close</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- modal blog section end  -->
     </main>
     <!-- script link  -->
     <script src="js/script.js"></script>
