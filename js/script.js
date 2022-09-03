@@ -123,8 +123,8 @@ const displayModal = modal => {
 }
 newsDetails()
 
-document.getElementById("blog-btn").addEventListener("click",function(){
-    
+document.getElementById("blog-btn").addEventListener("click", function () {
+
 })
 
 
