@@ -125,7 +125,9 @@ const displayModal = modal => {
         modalBody.innerHTML = `
             <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <p class="py-4">${element.details.slice(0, 450) + "..."}</p>
-            <h2 class="text-black text-center font-bold my-5">Author Name: ${element.author.name}</h2>
+            <h2 class="text-black text-center font-bold my-5">Author Name: ${element.author.name ? element.author.name : "No Data Available"}</h2>
+            <p class="text-center text-black">${element.author.published_date}</p>
+            <p class="font-bold text-black text-center my-5">View: ${element.total_view ? element.total_view : "No Data Available"}</p>
             <img src="${element.image_url}"/>
             `;
     })
