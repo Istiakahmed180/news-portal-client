@@ -48,8 +48,16 @@ const displayCategoryId = async datas => {
     categoriesShow.textContent = ``;
 
     datas.sort((a, b) => (a.total_view < b.total_view) ? 1 : -1)
+    const notFound = document.getElementById("not-found")
+
+    if (datas.length === 0) {
+        notFound.classList.remove("hidden")
+    } else {
+        notFound.classList.add("hidden")
+    }
 
     if (datas.length) {
+
         const showDiv = document.createElement("div")
         showDiv.innerHTML = `
             <p>${datas.length} Items Found For Update News</p>

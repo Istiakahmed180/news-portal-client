@@ -21,9 +21,10 @@
             <!-- <div class="flex-1 ">
                 <a class="btn btn-primary normal-case text-xl">Newz villa</a>
             </div> -->
-            <div class="flex-none gap-2">
+            <div class="flex-none">
                 <div>
-                    <ul class="menu menu-horizontal bg-indigo-600 text-white font-semibold rounded-box mr-10">
+                    <ul
+                        class="menu menu-horizontal flex-col lg:flex-row bg-indigo-600 text-white font-semibold rounded-box mr-10">
                         <li><a>OUTLOOK </a></li>
                         <!-- tabindex will make the parent menu focusable to keep the submenu open if it's focused -->
                         <li tabindex="0">
@@ -63,6 +64,12 @@
 
         </section>
         <!-- category list show end  -->
+
+        <!-- category not found section start -->
+        <section id="not-found" class="hidden">
+            <p class="text-2xl text-center font-semibold text-black">Not Found Any Data</p>
+        </section>
+        <!-- category not found section end -->
 
         <!-- category ID section start  -->
         <section class="w-5/6 mx-auto">
